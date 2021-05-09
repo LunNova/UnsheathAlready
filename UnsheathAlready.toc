@@ -1,0 +1,12 @@
+## Interface: 11307
+## Title: UnsheathAlready
+## Notes: Unsheaths weapons automatically
+## Author: Luna
+## Version: 1
+## X-Curse-Project-ID: 479686
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+
+src/UnsheathAlready.lua
