@@ -2,7 +2,7 @@
 ## Title: UnsheathAlready
 ## Notes: Unsheaths weapons automatically
 ## Author: Luna
-## Version: 1
+## Version: 1.0
 ## X-Curse-Project-ID: 479686
 
 #@no-lib-strip@
