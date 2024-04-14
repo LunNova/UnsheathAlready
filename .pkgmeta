@@ -1,4 +1,4 @@
-package-as: UnsheathAlready
+package-as: UnsheatheAlready
 
 externals:
   Libs/LibStub:

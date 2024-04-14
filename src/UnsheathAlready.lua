@@ -1,4 +1,4 @@
-UnsheathAlready = LibStub("AceAddon-3.0"):NewAddon("UnsheathAlready", "AceTimer-3.0", "AceConsole-3.0")
+UnsheatheAlready = LibStub("AceAddon-3.0"):NewAddon("UnsheatheAlready", "AceTimer-3.0", "AceConsole-3.0")
 
 local eventFrame
 local repeatingTimer
@@ -8,18 +8,18 @@ local lastUnsheath = 0
 
 local function destroyTimer()
     if onceTimer ~= nil then
-        UnsheathAlready:CancelTimer(onceTimer)
+        UnsheatheAlready:CancelTimer(onceTimer)
         onceTimer = nil
     end
     if repeatingTimer ~= nil then
-        UnsheathAlready:CancelTimer(repeatingTimer)
+        UnsheatheAlready:CancelTimer(repeatingTimer)
         repeatingTimer = nil
     end
 end
 
 local function startTimer()
     destroyTimer()
-    repeatingTimer = UnsheathAlready:ScheduleRepeatingTimer("UnsheathIfNeeded", 2)
+    repeatingTimer = UnsheatheAlready:ScheduleRepeatingTimer("UnsheathIfNeeded", 2)
 end
 
 local function shouldToggleSheath()
@@ -31,12 +31,12 @@ local function shouldToggleSheath()
             and not IsResting()
 end
 
-function UnsheathAlready:UnsheathIfNeededOnce()
+function UnsheatheAlready:UnsheathIfNeededOnce()
     onceTimer = nil
-    UnsheathAlready:UnsheathIfNeeded()
+    UnsheatheAlready:UnsheathIfNeeded()
 end
 
-function UnsheathAlready:UnsheathIfNeeded()
+function UnsheatheAlready:UnsheathIfNeeded()
     local toggle = shouldToggleSheath()
     if debug and not toggle and GetSheathState() == 1 then
         print("Not toggling sheath due to:")
@@ -57,11 +57,11 @@ function UnsheathAlready:UnsheathIfNeeded()
     end
 end
 
-function UnsheathAlready:OnInitialize()
+function UnsheatheAlready:OnInitialize()
     lastUnsheath = 0
     onceTimer = nil
 
-    eventFrame = CreateFrame("FRAME", "UnsheathAlreadyEventFrame")
+    eventFrame = CreateFrame("FRAME", "UnsheatheAlreadyEventFrame")
     local events = {
         'ADDON_LOADED',
         'PLAYER_REGEN_ENABLED',
@@ -76,15 +76,15 @@ function UnsheathAlready:OnInitialize()
             print("Calling UnsheathIfNeeded for event " .. event)
         end
         if onceTimer == nil then
-            onceTimer = UnsheathAlready:ScheduleTimer("UnsheathIfNeededOnce", 0.5)
+            onceTimer = UnsheatheAlready:ScheduleTimer("UnsheathIfNeededOnce", 0.5)
         end
     end)
 end
 
-function UnsheathAlready:OnEnable()
+function UnsheatheAlready:OnEnable()
     startTimer()
 end
 
-function UnsheathAlready:OnDisable()
+function UnsheatheAlready:OnDisable()
     destroyTimer()
 end
