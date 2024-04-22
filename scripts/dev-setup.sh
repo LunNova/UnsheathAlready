@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -xeuo pipefail
 
 ADDON_NAME=${PWD##*/}
 if [ "$ADDON_NAME" == "scripts" ] || [ ! -f "$ADDON_NAME.toc" ]; then
@@ -21,7 +21,7 @@ if [ ! -d ".release" ]; then
   popd
 fi
 
-.release/release.sh
+bash .release/release.sh
 
 WOW_ADDONS_DIR="$1"
 TARGET_DIR="$WOW_ADDONS_DIR/$ADDON_NAME"
@@ -38,6 +38,7 @@ fi
 
 
 pushd ".release/$ADDON_NAME/"
+mkdir -p "$TARGET_DIR"
 cp -r -t "$TARGET_DIR" *
 popd
 exit 0
