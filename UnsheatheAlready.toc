@@ -6,6 +6,8 @@
 ## Author: Luna
 ## Version: 1.0
 ## X-Curse-Project-ID: 479686
+## DefaultState: enabled
+## SavedVariables: UnsheatheAlreadyDB
 
 #@no-lib-strip@
 embeds.xml
